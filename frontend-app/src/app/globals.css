@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 57, 255, 20;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 10, 10, 10;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Courier New', monospace;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for terminal feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+  border: 1px solid #39FF14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #39FF14;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00FF41;
+}
+
+/* Terminal text selection */
+::selection {
+  background: #39FF14;
+  color: #000000;
+}
+
+/* Input focus effects */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 8px #39FF14, 0 0 16px #39FF14;
+}
+
+/* Terminal cursor blink effect */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+/* Scanline effect */
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(57, 255, 20, 0.1) 50%,
+    transparent 100%
+  );
+  animation: scanline 2s linear infinite;
+}
+
+/* CRT flicker effect */
+@keyframes crt-flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.98; }
+  51% { opacity: 1; }
+  52% { opacity: 0.98; }
+  53% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 0.15s infinite linear;
+}
+
+/* Terminal text typing effect */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid #39FF14;
+  white-space: nowrap;
+  animation: typewriter 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #39FF14; }
+}
+
+/* Disable text selection for terminal feel */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Terminal glow effects */
+.glow-text {
+  text-shadow: 0 0 8px #39FF14, 0 0 16px #39FF14;
+}
+
+.glow-text-strong {
+  text-shadow: 0 0 12px #39FF14, 0 0 24px #39FF14, 0 0 36px #39FF14;
+}
+
+.glow-border {
+  box-shadow: 0 0 16px #39FF14;
+}
+
+.glow-border-strong {
+  box-shadow: 0 0 24px #39FF14, 0 0 48px #39FF14;
+}
+
+.font-terminal {
+  font-family: 'VT323', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  color: #39FF14;
+  text-shadow: 0 0 2px #39FF14, 0 0 6px #39FF14, 0 0 12px #39FF14;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+}
