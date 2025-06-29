@@ -19,7 +19,6 @@ export default function Home() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [isInputFocused, setIsInputFocused] = useState(true);
   const currentAssistantContent = useRef('');
 
   const scrollToBottom = () => {
