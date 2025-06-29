@@ -183,7 +183,7 @@ Response: "The rusty robot sat alone in the junkyard, remembering its days of he
       const fewShotExamples = getFewShotExamples(input);
       const fullSystemMessage = systemMessage + fewShotExamples;
 
-      const response = await fetch('https://the-ai-engineer-challenge-murex.vercel.app/api/chat', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
