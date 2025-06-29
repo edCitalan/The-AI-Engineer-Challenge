@@ -16,14 +16,5 @@
         "src": "/(.*)", 
         "dest": "frontend-app/$1"
       }
-    ],
-    "buildCommand": "npm run build",
-    "outputDirectory": ".next",
-    "framework": "nextjs",
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
     ]
   } 

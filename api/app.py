@@ -23,7 +23,9 @@ app.add_middleware(
     allow_origins=[
         "https://the-ai-engineer-challenge-87sul6zyh-edward-citalans-projects.vercel.app",
         "https://the-ai-engineer-challenge-gules.vercel.app",
-        "http://localhost:3000"  # For local development
+        "http://localhost:3000",  # For local development
+        "https://*.vercel.app",   # Allow all Vercel deployments
+        "https://*.netlify.app"   # Allow Netlify deployments if needed
     ],
     allow_credentials=True,  # Allows cookies to be included in requests
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
@@ -36,6 +38,15 @@ class ChatRequest(BaseModel):
     developer_message: str  # Message from the developer/system
     user_message: str      # Message from the user
     model: Optional[str] = "gpt-4o-mini"  # Fixed model name
+
+# Define a root endpoint for health checks and deployment verification
+@app.get("/")
+async def root():
+    return {
+        "message": "OpenAI Chat API is running",
+        "status": "active",
+        "version": "1.0.0"
+    }
 
 # Define the main chat endpoint that handles POST requests
 @app.post("/api/chat")
