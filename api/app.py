@@ -25,7 +25,8 @@ app.add_middleware(
         "https://the-ai-engineer-challenge-gules.vercel.app",
         "http://localhost:3000",  # For local development
         "https://*.vercel.app",   # Allow all Vercel deployments
-        "https://*.netlify.app"   # Allow Netlify deployments if needed
+        "https://*.netlify.app",  # Allow Netlify deployments if needed
+        "https://*.onrender.com"  # Allow Render deployments
     ],
     allow_credentials=True,  # Allows cookies to be included in requests
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
@@ -40,8 +41,17 @@ class ChatRequest(BaseModel):
     model: Optional[str] = "gpt-4o-mini"  # Fixed model name
 
 # Define a root endpoint for health checks and deployment verification
-@app.get("/api")
+@app.get("/")
 async def root():
+    return {
+        "message": "OpenAI Chat API is running",
+        "status": "active",
+        "version": "1.0.0"
+    }
+
+# Define an API root endpoint for health checks and deployment verification
+@app.get("/api")
+async def api_root():
     return {
         "message": "OpenAI Chat API is running",
         "status": "active",
