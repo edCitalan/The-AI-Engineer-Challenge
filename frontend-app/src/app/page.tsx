@@ -183,7 +183,7 @@ Response: "The rusty robot sat alone in the junkyard, remembering its days of he
       const fewShotExamples = getFewShotExamples(input);
       const fullSystemMessage = systemMessage + fewShotExamples;
 
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch('https://the-ai-engineer-challenge-murex.vercel.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -233,7 +233,7 @@ Response: "The rusty robot sat alone in the junkyard, remembering its days of he
       console.error('Error:', error);
       setMessages(prev => [...prev, {
         role: 'system',
-        content: 'ERROR: Connection failed. Please ensure the backend is running on localhost:8000.',
+        content: 'ERROR: Connection failed. Please ensure the backend is running and accessible.',
         timestamp: new Date()
       }]);
     } finally {
