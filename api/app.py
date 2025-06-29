@@ -40,7 +40,7 @@ class ChatRequest(BaseModel):
     model: Optional[str] = "gpt-4o-mini"  # Fixed model name
 
 # Define a root endpoint for health checks and deployment verification
-@app.get("/")
+@app.get("/api")
 async def root():
     return {
         "message": "OpenAI Chat API is running",
