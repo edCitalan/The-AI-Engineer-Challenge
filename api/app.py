@@ -21,12 +21,10 @@ app = FastAPI(title="OpenAI Chat API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://the-ai-engineer-challenge-87sul6zyh-edward-citalans-projects.vercel.app",
-        "https://the-ai-engineer-challenge-gules.vercel.app",
-        "http://localhost:3000",  # For local development
-        "https://*.vercel.app",   # Allow all Vercel deployments
-        "https://*.netlify.app",  # Allow Netlify deployments if needed
-        "https://*.onrender.com"  # Allow Render deployments
+        "https://the-ai-engineer-challenge-iln8ry4z9-edward-citalans-projects.vercel.app",
+        "https://the-ai-engineer-challenge-two-eta.vercel.app",
+        "https://the-ai-engineer-challenge-git-main-edward-citalans-projects.vercel.app",
+        "http://localhost:3000"  # For local development
     ],
     allow_credentials=True,  # Allows cookies to be included in requests
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
