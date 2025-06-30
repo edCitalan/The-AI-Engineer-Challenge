@@ -1,5 +1,5 @@
 # Import required FastAPI components for building the API
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 # Import Pydantic for data validation and settings management
@@ -20,15 +20,10 @@ app = FastAPI(title="OpenAI Chat API")
 # This allows the API to be accessed from different domains/origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://the-ai-engineer-challenge-iln8ry4z9-edward-citalans-projects.vercel.app",
-        "https://the-ai-engineer-challenge-two-eta.vercel.app",
-        "https://the-ai-engineer-challenge-git-main-edward-citalans-projects.vercel.app",
-        "http://localhost:3000"  # For local development
-    ],
-    allow_credentials=True,  # Allows cookies to be included in requests
-    allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
-    allow_headers=["*"],  # Allows all headers in requests
+    allow_origins=["*"],  # TEMP: Allow all origins for debugging
+    allow_credentials=False,  # Must be False when using "*"
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Define the data model for chat requests using Pydantic
@@ -98,6 +93,10 @@ async def chat(request: ChatRequest):
 @app.get("/api/health")
 async def health_check():
     return {"status": "ok"}
+
+@app.options("/api/chat")
+async def options_chat(request: Request):
+    return {}
 
 # Entry point for running the application directly
 if __name__ == "__main__":
