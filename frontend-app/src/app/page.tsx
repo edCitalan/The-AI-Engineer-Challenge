@@ -33,10 +33,13 @@ export default function Home() {
     scrollToBottom();
   }, [messages]);
 
-  // Check document status on component mount
+  // Removed automatic document-status check to avoid premature "ready" messages
+  // If you want to re-enable, uncomment the lines below.
+  /*
   useEffect(() => {
     checkDocumentStatus();
   }, []);
+  */
 
   const checkDocumentStatus = async () => {
     try {
@@ -44,13 +47,7 @@ export default function Home() {
       if (response.ok) {
         const data = await response.json();
         setDocumentLoaded(data.document_loaded);
-        if (data.document_loaded) {
-          setMessages(prev => [...prev, {
-            role: 'system',
-            content: `Document loaded successfully! You can now ask questions about the uploaded document.\n\n> `,
-            timestamp: new Date()
-          }]);
-        }
+        // Removed auto-pushing system message to avoid duplicate success notice
       }
     } catch (error) {
       console.error('Error checking document status:', error);
