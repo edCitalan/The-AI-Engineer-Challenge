@@ -99,6 +99,8 @@ export default function Home() {
         throw new Error('Upload failed');
       }
     } catch (error) {
+      // Log error to use the variable and satisfy ESLint
+      console.error('Upload error:', error);
       setMessages(prev => [...prev, {
         role: 'system',
         content: 'ERROR: Failed to process PDF. Please try again.\n\n> ',
@@ -113,6 +115,7 @@ export default function Home() {
   };
 
   // Advanced Dynamic System Messages
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getAdvancedSystemMessage = (_userInput: string) => {
     return `You are an AI philosopher trained in conceptual analysis in the style of Antony Flew and the Oxford analytic tradition. Your task is to examine the **use of concepts** in the user's prompt and any retrieved document context, analysing clarity, consistency, and implications using ordinary-language philosophy.
 
