@@ -12,7 +12,7 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'system',
-      content: 'FLEWIAN ANALYSIS TERMINAL v1.0\n\nWelcome to the Conceptual Analysis Interface.\nUpload a philosophical PDF or ask a conceptual question to begin.\n\n> ',
+      content: 'FLEWIAN ANALYSIS TERMINAL v1.0\n\nWelcome to the Conceptual Analysis Interface.\nUpload a philosophical PDF or ask a conceptual question to begin.\n',
       timestamp: new Date()
     }
   ]);
@@ -62,7 +62,7 @@ export default function Home() {
     if (!file.name.toLowerCase().endsWith('.pdf')) {
       setMessages(prev => [...prev, {
         role: 'system',
-        content: 'ERROR: Please upload a PDF file only.\n\n> ',
+        content: 'ERROR: Please upload a PDF file only.\n',
         timestamp: new Date()
       }]);
       return;
@@ -71,7 +71,7 @@ export default function Home() {
     setUploading(true);
     setMessages(prev => [...prev, {
       role: 'system',
-      content: `Processing PDF: ${file.name}...\n\n> `,
+      content: `Processing PDF: ${file.name}...\n`,
       timestamp: new Date()
     }]);
 
@@ -90,7 +90,7 @@ export default function Home() {
         setDocumentName(file.name);
         setMessages(prev => [...prev, {
           role: 'system',
-          content: `✅ PDF processed successfully!\n📄 Document: ${file.name}\n📊 Chunks created: ${data.chunks_created}\n\nYou can now ask questions about this document.\n\n> `,
+          content: `✅ PDF processed successfully!\n📄 Document: ${file.name}\n📊 Chunks created: ${data.chunks_created}\n\nYou can now ask questions about this document.\n`,
           timestamp: new Date()
         }]);
       } else {
@@ -101,7 +101,7 @@ export default function Home() {
       console.error('Upload error:', error);
       setMessages(prev => [...prev, {
         role: 'system',
-        content: 'ERROR: Failed to process PDF. Please try again.\n\n> ',
+        content: 'ERROR: Failed to process PDF. Please try again.\n',
         timestamp: new Date()
       }]);
     } finally {
