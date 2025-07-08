@@ -6,6 +6,40 @@
 
 ## <h1 align="center" id="heading"> 👋 Welcome to the AI Engineer Challenge</h1>
 
+## 🧠 Flewian Analysis Terminal  
+*A philosophy-powered RAG playground built with FastAPI + Next.js + the aimakerspace toolkit.*  
+
+Upload any philosophy PDF (or the included Bentham/Mill samples) and interrogate it in the razor-sharp style of **Antony Flew**. Each AI reply performs a four-step conceptual analysis:
+
+1. **Clarify the Conceptual Terms**  
+2. **Uncover Assumptions**  
+3. **Apply a Paradigm-Case Argument**  
+4. **Provide a Clear, Brief Conclusion**  
+
+Blank lines are inserted between each section for easy reading, and direct quotes are cited like `(Book, p. 42)` so you can chase the source. 🕵️‍♂️📖  
+
+### ✨ Key Features
+- ⚡ **Upload & Index** PDFs on-the-fly via a FastAPI backend and `aimakerspace` vector database.
+- 🧠 **Flewian Prompt-Engine** ensures every answer sticks to ordinary-language philosophy & exposes hidden assumptions.
+- 🖥️ **Retro Fallout UI**: green-on-black terminal vibes with scan-lines and glow.
+- 🚀 **Instant Deploys** on Vercel (frontend) + Render/Fly for the backend.
+
+### 🚀 Live Demo
+[https://your-vercel-domain.vercel.app](https://your-vercel-domain.vercel.app) ← replace with your real URL.
+
+### 🛠️ Local Dev Quick Start
+```bash
+# Backend
+uvicorn api.app:app --reload
+
+# Frontend
+cd frontend-app
+npm install   # first run only
+npm run dev   # open http://localhost:3000
+```
+
+---
+
 ## 🤖 Your First Vibe Coding LLM Application
 
 > If you are a novice, and need a bit more help to get your dev environment off the ground, check out this [Setup Guide](docs/GIT_SETUP.md). This guide will walk you through the 'git' setup you need to get started.
