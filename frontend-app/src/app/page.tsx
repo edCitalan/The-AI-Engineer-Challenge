@@ -41,6 +41,7 @@ export default function Home() {
   }, []);
   */
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const checkDocumentStatus = async () => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/document-status`);
